@@ -21,7 +21,7 @@ def get_expected_q_len(x, demands_f):
     def expected_q_len_f(times):
         #  note: need to divide by 3600 because x axis is epoch seconds while y axis is cars/hour.
         if isinstance(times, (float, int)):
-            return expected_q_len_f(pd.Timestamp.fromtimestamp(times))
+            return expected_q_len_f(pd.Timestamp.utcfromtimestamp(times))
         elif isinstance(times, pd.DatetimeIndex):
             # print(times)
             return pd.Series(times).apply(expected_q_len_f)

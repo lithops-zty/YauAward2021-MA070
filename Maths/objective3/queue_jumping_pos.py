@@ -27,7 +27,7 @@ def get_q_jump_pos(x, demands_f, *, gamma):
         t_l_prime = (P_A_prime + - 2 * gamma * psi * X_A) / (12.6 / 19 * (1 - psi / 1.26)) - 2 * gamma * t_dA
 
         if isinstance(times, (float, int)):
-            return q_jump_pos(pd.Timestamp.fromtimestamp(times))
+            return q_jump_pos(pd.Timestamp.utcfromtimestamp(times))
         elif isinstance(times, (pd.DatetimeIndex, np.ndarray)):
             return pd.Series(times).apply(q_jump_pos)
 

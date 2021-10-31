@@ -14,7 +14,7 @@ from YauAward2021.Maths.parse_changi_airport_arrivals import get_passenger_arriv
 from YauAward2021.Maths.parse_changi_airport_departures import get_passenger_departures
 from YauAward2021.Maths.taxi_demand_prediction import get_taxi_demands
 from YauAward2021.Maths.taxi_inbound_prediction import get_taxi_inbounds
-from YauAward2021.Maths.util import get_intercepts, to_epoch
+from YauAward2021.Maths.util import get_intercepts, to_epoch, plot_intercepts, offset
 
 
 def print_decision(intercepts_x):
@@ -23,20 +23,18 @@ def print_decision(intercepts_x):
     ax.scatter(intercepts_x, np.zeros(shape=intercepts_x.shape))
     print(intercepts_x)
 
-
     tmp = [datetime.timedelta(seconds=i) for i in
-                              np.diff(to_epoch(intercepts_x), prepend=to_epoch(intercepts_x[-1] - datetime.timedelta(hours=24)))]
+           np.diff(to_epoch(intercepts_x), prepend=to_epoch(intercepts_x[-1] - datetime.timedelta(hours=24)))]
     print([str(x) for x in tmp])
 
     print(sum(tmp[1::2], start=datetime.timedelta(hours=0)))
 
 
+def plot_one_day(ax, date):
+    x = pd.date_range(date, offset(date, 1), freq='1Min')
 
-if __name__ == '__main__':
-    x = pd.date_range('2019/11/30 00:00', '2019/12/1 00:00', freq='1Min')
-
-    arrivals_x, arrivals_f = get_passenger_arrivals()
-    departures_x, departures_f = get_passenger_departures()
+    arrivals_x, arrivals_f = get_passenger_arrivals(date)
+    departures_x, departures_f = get_passenger_departures(date)
 
     demands_x, demands_f = get_taxi_demands(arrivals_x, arrivals_f)
     inbounds_x, inbounds_f = get_taxi_inbounds(departures_x, departures_f)
@@ -44,27 +42,45 @@ if __name__ == '__main__':
     actual_q_len_x, actual_q_len_f = get_actual_q_len(x, inbounds_f, demands_f)
     expected_q_len_x, expected_q_len_f = get_expected_q_len(demands_x, demands_f)
 
-    fig, ax = plt.subplots()
-
     actual_q_len = actual_q_len_f(x)
     expected_q_len = expected_q_len_f(x)
+
+    # plot_intercepts(ax, x, actual_q_len, expected_q_len)
 
     ax.plot(x, actual_q_len, label='actual')
     ax.plot(x, expected_q_len, label='equal profit', linestyle='--')
 
-
     length = min(np.sum(~np.isnan(actual_q_len)), np.sum(~np.isnan(expected_q_len)))
     intercepts, _ = get_intercepts(x, actual_q_len[:length], expected_q_len[:length])
 
-    print_decision(intercepts)
+    # print_decision(intercepts)
 
-
-    ax.set_xlabel('time (Nov.30 2019)')
-    ax.set_ylabel('queue length')
+    # ax.set_title('model')
+    ax.set_xlabel(f'time {date}')
+    # ax.set_ylabel('queue length')
 
     myFmt = mdates.DateFormatter('%H:%M')
     ax.xaxis.set_major_formatter(myFmt)
 
-    ax.legend()
+    for tick in ax.get_xticklabels():
+        tick.set_rotation(-45)
+
+    # ax.legend()
+
+
+begin = '2021/09/16'
+end = offset(begin, 1)
+
+if __name__ == '__main__':
+    r = 3
+    c = 3
+    fig, ax = plt.subplots(r, c, squeeze=False)
+
+    ax = ax.reshape(-1)
+
+    for i in range(r * c):
+        plot_one_day(ax[i], offset(begin, i))
+
+        print(i, 'done!')
 
     plt.show()

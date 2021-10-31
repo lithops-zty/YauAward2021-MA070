@@ -28,7 +28,7 @@ def get_actual_q_len(x, inbounds_f, demands_f):
 
         #  note: need to divide by 3600 because x axis is epoch seconds while y axis is cars/hour.
         if isinstance(times, (float, int)):
-            return actual_q_len_f(pd.Timestamp.fromtimestamp(times))
+            return actual_q_len_f(pd.Timestamp.utcfromtimestamp(times))
         elif isinstance(times, (pd.DatetimeIndex, np.ndarray)):
             # # sliding window speedup, still slow
             # window = (0, 0)

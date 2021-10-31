@@ -8,4 +8,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-print(-np.inf < -1e100)
+s = datetime.datetime.strptime('2020/03/30', '%Y/%m/%d') + datetime.timedelta(days=1)
+
+print(s.strftime('%Y/%m/%d'))

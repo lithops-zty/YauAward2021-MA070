@@ -21,8 +21,8 @@ def get_taxi_demands(x, arrivals_f):
     new_x = x.map(lambda x: x + datetime.timedelta(hours=arr_offset_hours))
     def demands_f(times):
         if isinstance(times, (float, int)):
-            return demands_f(pd.Timestamp.fromtimestamp(times))
-        elif isinstance(times, pd.DatetimeIndex):
+            return demands_f(pd.Timestamp.utcfromtimestamp(times))
+        elif isinstance(times, (pd.DatetimeIndex, pd.Index)):
             return pd.Series(times).apply(demands_f)
         elif isinstance(times, pd.Timestamp):
             return arrivals_f(times - datetime.timedelta(hours=arr_offset_hours)) * (k_t_day if is_day(times) else k_t_night) / psg_per_taxi
@@ -31,14 +31,13 @@ def get_taxi_demands(x, arrivals_f):
     return new_x, interpolate(sample_x, demands_f(sample_x))
 
 
+
 if __name__ == '__main__':
     x = pd.date_range('2019/11/30 00:00', '2019/12/1 00:00', freq='1Min')
 
     arrivals_x, arrivals_f = get_passenger_arrivals()
 
     demands_x, demands_f = get_taxi_demands(arrivals_x, arrivals_f)
-
-
 
     fig, ax = plt.subplots()
 
@@ -51,4 +50,3 @@ if __name__ == '__main__':
     ax.xaxis.set_major_formatter(myFmt)
 
     plt.show()
-
