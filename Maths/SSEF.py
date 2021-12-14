@@ -7,10 +7,10 @@ from matplotlib import pyplot as plt
 
 import matplotlib.dates as mdates
 
-from YauAward2021.Maths.objective1.constants import psg_per_taxi
-from YauAward2021.Maths.parse_changi_airport_arrivals import get_passenger_arrivals
-from YauAward2021.Maths.parse_changi_airport_departures import get_passenger_departures
-from YauAward2021.Maths.taxi_demand_prediction import get_taxi_demands
+from Maths.objective1.constants import psg_per_taxi
+from Maths.parse_changi_airport_arrivals import get_passenger_arrivals
+from Maths.parse_changi_airport_departures import get_passenger_departures
+from Maths.taxi_demand_prediction import get_taxi_demands
 from taxi_inbound_prediction import get_taxi_inbounds
 from math import factorial
 from util import interpolate, plot_intercepts, get_intercepts

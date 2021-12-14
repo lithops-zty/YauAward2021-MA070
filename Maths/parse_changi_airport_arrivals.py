@@ -10,8 +10,8 @@ import matplotlib.dates as mdates
 
 import pandas as pd
 
-from YauAward2021.Maths.util import interpolate, offset
-from YauAward2021.Maths.objective1.constants import psg_per_flight
+from Maths.util import interpolate, offset
+from Maths.objective1.constants import psg_per_flight
 
 data_path = r'D:\PyCharmProjects\HCICP\YauAward2021\Maths\data\\'
 

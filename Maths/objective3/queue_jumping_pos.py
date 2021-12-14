@@ -10,13 +10,13 @@ import numpy as np
 import pandas as pd
 import scipy.integrate
 
-from YauAward2021.Maths.util import to_epoch, get_intercepts, plot_intercepts
-from YauAward2021.Maths.objective1.actual_queue_length import get_actual_q_len
-from YauAward2021.Maths.objective3.constants import P_A_prime, psi, X_A, t_dA
-from YauAward2021.Maths.parse_changi_airport_arrivals import get_passenger_arrivals
-from YauAward2021.Maths.parse_changi_airport_departures import get_passenger_departures
-from YauAward2021.Maths.taxi_demand_prediction import get_taxi_demands
-from YauAward2021.Maths.taxi_inbound_prediction import get_taxi_inbounds
+from Maths.util import to_epoch, get_intercepts, plot_intercepts
+from Maths.objective1.actual_queue_length import get_actual_q_len
+from Maths.objective3.constants import P_A_prime, psi, X_A, t_dA
+from Maths.parse_changi_airport_arrivals import get_passenger_arrivals
+from Maths.parse_changi_airport_departures import get_passenger_departures
+from Maths.taxi_demand_prediction import get_taxi_demands
+from Maths.taxi_inbound_prediction import get_taxi_inbounds
 
 
 def get_q_jump_pos(x, demands_f, *, gamma):

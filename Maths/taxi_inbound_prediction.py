@@ -8,9 +8,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 
-from YauAward2021.Maths.util import interpolate
-from YauAward2021.Maths.parse_changi_airport_departures import get_passenger_departures
-from YauAward2021.Maths.objective1.constants import dep_offset_hours, k_t_day, k_t_night, psg_per_taxi
+from Maths.util import interpolate
+from Maths.parse_changi_airport_departures import get_passenger_departures
+from Maths.objective1.constants import dep_offset_hours, k_t_day, k_t_night, psg_per_taxi
 
 
 def is_day(time: datetime.datetime):

@@ -7,12 +7,12 @@ import numpy as np
 import pandas as pd
 import scipy.integrate
 
-from YauAward2021.Maths.util import to_epoch
-from YauAward2021.Maths.parse_changi_airport_arrivals import get_passenger_arrivals
-from YauAward2021.Maths.parse_changi_airport_departures import get_passenger_departures
-from YauAward2021.Maths.taxi_demand_prediction import get_taxi_demands
-from YauAward2021.Maths.taxi_inbound_prediction import get_taxi_inbounds
-from YauAward2021.Maths.objective1.constants import t_l, n0
+from Maths.util import to_epoch
+from Maths.parse_changi_airport_arrivals import get_passenger_arrivals
+from Maths.parse_changi_airport_departures import get_passenger_departures
+from Maths.taxi_demand_prediction import get_taxi_demands
+from Maths.taxi_inbound_prediction import get_taxi_inbounds
+from Maths.objective1.constants import t_l, n0
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 

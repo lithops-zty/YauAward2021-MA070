@@ -6,10 +6,10 @@ import datetime
 import pandas as pd
 import scipy.integrate
 
-from YauAward2021.Maths.util import to_epoch
-from YauAward2021.Maths.parse_changi_airport_arrivals import get_passenger_arrivals
-from YauAward2021.Maths.taxi_demand_prediction import get_taxi_demands
-from YauAward2021.Maths.objective1.constants import t_l
+from Maths.util import to_epoch
+from Maths.parse_changi_airport_arrivals import get_passenger_arrivals
+from Maths.taxi_demand_prediction import get_taxi_demands
+from Maths.objective1.constants import t_l
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 

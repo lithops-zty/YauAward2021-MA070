@@ -11,7 +11,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 
-from YauAward2021.Maths.objective2.constants import lambda_, k, v, L, t_r
+from Maths.objective2.constants import lambda_, k, v, L, t_r
 import scipy.integrate
 import scipy.stats
 

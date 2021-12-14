@@ -12,14 +12,14 @@ import matplotlib.dates as mdates
 
 import matplotlib.pyplot as plt
 
-from YauAward2021.Maths.objective1.actual_queue_length import get_actual_q_len
-from YauAward2021.Maths.objective1.constants import t_di, t_dA, t_e, X_A, psi, P_A, P_i, X_i
-from YauAward2021.Maths.objective1.expected_queue_length import get_expected_q_len
-from YauAward2021.Maths.parse_changi_airport_arrivals import get_passenger_arrivals
-from YauAward2021.Maths.parse_changi_airport_departures import get_passenger_departures
-from YauAward2021.Maths.taxi_demand_prediction import get_taxi_demands
-from YauAward2021.Maths.taxi_inbound_prediction import get_taxi_inbounds
-from YauAward2021.Maths.util import interpolate
+from Maths.objective1.actual_queue_length import get_actual_q_len
+from Maths.objective1.constants import t_di, t_dA, t_e, X_A, psi, P_A, P_i, X_i
+from Maths.objective1.expected_queue_length import get_expected_q_len
+from Maths.parse_changi_airport_arrivals import get_passenger_arrivals
+from Maths.parse_changi_airport_departures import get_passenger_departures
+from Maths.taxi_demand_prediction import get_taxi_demands
+from Maths.taxi_inbound_prediction import get_taxi_inbounds
+from Maths.util import interpolate
 
 
 def get_actual_waiting_time(x, actual_q_len_f, demands_f):

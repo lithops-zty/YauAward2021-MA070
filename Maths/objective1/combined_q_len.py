@@ -8,13 +8,13 @@ import pandas as pd
 from matplotlib import pyplot as plt
 import matplotlib.dates as mdates
 
-from YauAward2021.Maths.objective1.actual_queue_length import get_actual_q_len
-from YauAward2021.Maths.objective1.expected_queue_length import get_expected_q_len
-from YauAward2021.Maths.parse_changi_airport_arrivals import get_passenger_arrivals
-from YauAward2021.Maths.parse_changi_airport_departures import get_passenger_departures
-from YauAward2021.Maths.taxi_demand_prediction import get_taxi_demands
-from YauAward2021.Maths.taxi_inbound_prediction import get_taxi_inbounds
-from YauAward2021.Maths.util import get_intercepts, to_epoch, plot_intercepts, offset
+from Maths.objective1.actual_queue_length import get_actual_q_len
+from Maths.objective1.expected_queue_length import get_expected_q_len
+from Maths.parse_changi_airport_arrivals import get_passenger_arrivals
+from Maths.parse_changi_airport_departures import get_passenger_departures
+from Maths.taxi_demand_prediction import get_taxi_demands
+from Maths.taxi_inbound_prediction import get_taxi_inbounds
+from Maths.util import get_intercepts, to_epoch, plot_intercepts, offset
 
 
 def print_decision(intercepts_x):
